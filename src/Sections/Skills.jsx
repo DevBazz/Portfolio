@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 
+gsap.registerPlugin(ScrollTrigger)
 
 const Skills = () => {
 
@@ -37,8 +38,7 @@ useGSAP(() =>{
         trigger: circleDiv.current,
          start: "top 55%",
             end: "top 40%",
-            scrub: true,
-            markers: true
+            scrub: true
     },
     y: 60,
     opacity: 1,
