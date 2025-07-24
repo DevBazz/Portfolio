@@ -14,49 +14,99 @@ const Skills = () => {
 
    const frontendDiv = useRef(null)
    const backendDiv = useRef(null)
-   const circle = useRef(null) 
+   const marque = useRef(null)
    const circleDiv = useRef(null)
 
 useGSAP(() =>{
  
-    gsap.set(circle.current, {
-        opacity: 0
-    })
-
     gsap.to(frontendDiv.current, {
         scrollTrigger: {
             trigger: frontendDiv.current,
-            start: "top 20%",
-            end: "top 60%"
+            start: "top 40%",
+            end: "top 10%",
+            scrub: true,
+            markers: true
+
         },
-        boxShadow: "0 25px 50px 3px #4f46e5",
+        boxShadow: "0 15px 30px 3px #4f46e5",
         duration: 1   
     })
 
-   gsap.to(circle.current, {
+   gsap.to(backendDiv.current, {
     scrollTrigger: {
         trigger: circleDiv.current,
-         start: "top 55%",
-            end: "top 40%",
-            scrub: true
-    },
-    y: 60,
-    opacity: 1,
-    onComplete: () => {
-       gsap.to(backendDiv.current, {
-        boxShadow: "0 25px 50px 3px #4f46e5",
+         start: "top 60%",
+         end: "top 30%",
+         scrub: true
+        },
+        boxShadow: "0 15px 30px 3px #4f46e5",
         duration: 1 
        })
-    }
-   }) 
-} )
+
+    window.addEventListener("wheel", function(dets){
+ if(dets.deltaY > 0){
+  gsap.to(".marque", {
+    transform : "translateX(-200%)",
+    duration:4,
+    repeat: -1,
+    ease: "none"
+  })
+
+gsap.to(".marque img", {
+  rotate:180
+})
+
+}
+  else{
+    gsap.to(".marque", {
+      transform : "translateX(0%)",
+      duration:4,
+      repeat: -1,
+      ease: "none"
+    })
+
+    gsap.to(".marque img", {
+      rotate:0
+    })
+  }
+})
+
+    } 
+    )
 
     return(
         <>
-        <section className="bg-[url(https://us.123rf.com/450wm/vectora/vectora2203/vectora220308576/183508806-graph-plotting-coordinate-and-millimeter-paper-blueprint-seamlessly-repetable-grid-mesh.jpg?ver=6)] 
-            w-full h-[145vh] bg-repeat-round">
+        <section className=" w-full h-[145vh] bg-repeat-round">
+            
+          <div className="flex h-[6vw] overflow-x-hidden bg-indigo-500">
+            <div className="marque flex items-center gap-[1vw] padding-marque shrink-0">
+                <h1 className="text-[2vw] marque-h1">THRIVE BEYOND LIMIT</h1>
+                <img className="h-[5vh]" src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg" alt="" />
+            </div>
+            <div className="marque flex items-center gap-[1vw] padding-marque shrink-0">
+                <h1 className="text-[2vw] marque-h1">THRIVE BEYOND LIMIT</h1>
+                <img className="h-[5vh]" src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg" alt="" />
+            </div>
+            <div className="marque flex items-center gap-[1vw] padding-marque shrink-0">
+                <h1 className="text-[2vw] marque-h1">THRIVE BEYOND LIMIT</h1>
+                <img className="h-[5vh]" src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg" alt="" />
+            </div>
+            <div className="marque flex items-center gap-[1vw] padding-marque shrink-0">
+                <h1 className="text-[2vw] marque-h1">THRIVE BEYOND LIMIT</h1>
+                <img className="h-[5vh]" src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg" alt="" />
+            </div>
+            <div className="marque flex items-center gap-[1vw] padding-marque shrink-0">
+                <h1 className="text-[2vw] marque-h1">THRIVE BEYOND LIMIT</h1>
+                <img className="h-[5vh]" src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg" alt="" />
+            </div>
+            <div className="marque flex items-center gap-[1vw] padding-marque shrink-0">
+                <h1 className="text-[2vw] marque-h1">THRIVE BEYOND LIMIT</h1>
+                <img className="h-[5vh]" src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg" alt="" />
+            </div>
+          </div>  
+
             <div className="flex flex-col justify-center items-center " >
-                <h2 className="margin-class shadow-xl shadow-indigo-600 text-center text-white text-[5vw] font-bold bg-[#6667bd] w-[60vw] h-[15vh] rounded-xl">What I Know</h2>
+                <h2 className="margin-class shadow-xl shadow-indigo-600 text-center text-white text-[5vw] font-bold w-[60vw] h-[15vh] rounded-xl">What <span className="bg-gradient-to-r from-[#8279D9] to-indigo-900 bg-clip-text text-transparent">I Know</span></h2>
 
             <div className="flex flex-col">
             <div className="w-[18vw] h-[48vh] rounded bg-white/10 backdrop-blur-md border border-white/30 " ref={frontendDiv}>
@@ -75,7 +125,6 @@ useGSAP(() =>{
             </div>
 
             <div className="w-0.5 h-15 bg-zinc-400 center " ref={circleDiv}>
-                <div className="w-2.5 h-2.5 bg-indigo-600 rounded-[50%] center-circle" ref={circle}></div>
             </div>
 
             <div className="w-[18vw] h-[48vh] rounded bg-white/10 backdrop-blur-md border border-white/30 " ref={backendDiv}>

@@ -52,7 +52,7 @@ const projectCards = [
   return (
     <section
       ref={sectionRef}
-      className="bg-gradient-to-r from-[#8279D9]  to-indigo-900 w-screen h-[110vh]"
+      className="w-screen h-[110vh]"
     >
       <div className="flex flex-col justify-center items-center relative gap-[30vh]">
         <h2 className="margin-class shadow-xl shadow-indigo-600 text-center text-white text-[5vw] font-bold bg-black w-[60vw] h-[15vh] rounded-xl">

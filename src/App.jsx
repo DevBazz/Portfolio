@@ -11,7 +11,7 @@ function App() {
   return (
     <>
     <LiquidGlass />
-    <div className="">
+    <div className="bg-black">
       <Hero />
       <About />
       <Skills />

@@ -14,31 +14,31 @@ const About = () => {
   const aboutStr = `About Me`.split("");
   const animationCharacters = `HELLO WORLD`.split("")
 
-//   useGSAP(() => {
-//   const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+  useGSAP(() => {
+  const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
 
-//   tl.to(".char", {
-//     y: -70,
-//     ease: "power1.inOut",
-//     stagger: 0.1,
-//   })
-//     .to(".char", {
-//       rotate: -360,
-//       duration: 1,
-//       ease: "power1.inOut",
-//       stagger: 0.1,
-//     })
-//     .to(".char", {
-//       y: 0,
-//       duration: 1,
-//       ease: "back.out(2)",
-//       stagger: 0.1,
-//     });
-// }, { scope: helloWorld });
+  tl.to(".char", {
+    y: -70,
+    ease: "power1.inOut",
+    stagger: 0.1,
+  })
+    .to(".char", {
+      rotate: -360,
+      duration: 1,
+      ease: "power1.inOut",
+      stagger: 0.1,
+    })
+    .to(".char", {
+      y: 0,
+      duration: 1,
+      ease: "back.out(2)",
+      stagger: 0.1,
+    });
+}, { scope: helloWorld });
 
 
       useGSAP(() => {
-
+  
        gsap.set(aboutText.current, {x: 400})
        gsap.set(summaryText.current, {opacity: 0, y: 20})
 
@@ -50,13 +50,13 @@ const About = () => {
               },
               y:100,
              opacity:0,
-             duration:1,
+             
              stagger:0.20,
              onComplete: () => {
               gsap.to(aboutText.current, {
               x: 0,
               duration: 2,
-              ease: "back.out(1.5)",
+              ease: "power3.inOut",
               onComplete: () => {
                 gsap.to(summaryText.current, {
                   y: 5,
@@ -77,7 +77,7 @@ const About = () => {
         },
               y:100,
              opacity:0,
-             duration:1,
+             
              stagger:-0.20,
              
         })
@@ -86,14 +86,14 @@ const About = () => {
       }, {scope: aboutText})
 
   return (
-    <section className="bg-[url(https://assets-global.website-files.com/61defec4a021d8fe954c11bd/61defec4a021d83ede4c11f8_stars.gif)] rounded-t-3xl flex flex-col items-center justify-center">
+    <section className=" flex flex-col items-center justify-center">
       <div className="flex justify-center m-10 items-center gap-[10vw] tracking-normal h-[80vh] " ref={aboutDiv}>
         <h2 className="text-[6vw] w-[25vw] text-white about" ref={aboutText}>
           {
             aboutStr.map((char, index) => (
               index < 4 ? 
                 <span key={index} className="half-str inline-block">{char === " " ? "\u00A0" : char}</span> : 
-                <span key={index} className="sec-str inline-block">{char === " " ? "\u00A0" : char}</span>
+                <span key={index} className={`sec-str inline-block ${index >= 6 ? "bg-gradient-to-r from-[#8279D9] to-indigo-900 bg-clip-text text-transparent" : ""}`}>{char === " " ? "\u00A0" : char}</span>
             ))
           }
           </h2>
@@ -108,7 +108,7 @@ const About = () => {
         </p>
       </div>
 
-      <div className="text-white bg-linear-to-r from-[#8279D9] to-indigo-900 w-screen h-[75vh] flex flex-col items-center justify-center gap-8">
+      <div className="text-white w-screen h-[75vh] flex flex-col items-center justify-center gap-8 shadow-[inset_0_4px_12px_#8279D9]">
         <h3 className="text-[6vw] font-bold tracking-wide" ref={helloWorld}>
           {animationCharacters.map((char, index) => (
             <span key={index} className="char inline-block">
