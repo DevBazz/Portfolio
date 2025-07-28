@@ -128,9 +128,9 @@ const Skills = () => {
 
         <div className="flex flex-col justify-center items-center ">
           <h2 className="margin-class shadow-xl shadow-indigo-600 text-center text-white text-[5vw] font-bold w-[60vw] h-[15vh] rounded-xl">
-            What{" "}
+            What I{" "}
             <span className="bg-gradient-to-r from-[#8279D9] to-indigo-900 bg-clip-text text-transparent">
-              I Know
+              Know
             </span>
           </h2>
 

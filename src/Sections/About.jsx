@@ -113,7 +113,7 @@ const About = () => {
       <div className="text-white w-screen h-[75vh] flex flex-col items-center justify-center gap-8 shadow-[0_4px_10px_-2px_#4f46e5]" ref={helloWorldDiv}>
         <h3 className="text-[6vw] font-bold tracking-wide" ref={helloWorld}>
           {animationCharacters.map((char, index) => (
-            <span key={index} className="char inline-block">
+            <span key={index} className={`${ index <6 ?  "char inline-block" : "char inline-block bg-gradient-to-r from-[#8279D9] to-indigo-900 bg-clip-text text-transparent" }`}>
               {char === " " ? "\u00A0" : char}
             </span>
           ))}
