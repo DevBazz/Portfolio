@@ -10,12 +10,20 @@ const About = () => {
   const aboutText = useRef(null)
   const summaryText = useRef(null)
   const aboutDiv = useRef(null)
+  const helloWorldDiv = useRef(null)
 
   const aboutStr = `About Me`.split("");
   const animationCharacters = `HELLO WORLD`.split("")
 
   useGSAP(() => {
-  const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+  const tl = gsap.timeline({ 
+    scrollTrigger: {
+      trigger: helloWorldDiv.current,
+      start: "top 30%",
+    },
+    repeat: -1, 
+    repeatDelay: 1.5 
+  });
 
   tl.to(".char", {
     y: -70,
@@ -86,7 +94,7 @@ const About = () => {
       }, {scope: aboutText})
 
   return (
-    <section className=" flex flex-col items-center justify-center">
+    <section id="about" className=" flex flex-col items-center justify-center ">
       <div className="flex justify-center m-10 items-center gap-[10vw] tracking-normal h-[80vh] " ref={aboutDiv}>
         <h2 className="text-[6vw] w-[25vw] text-white about" ref={aboutText}>
           {
@@ -97,18 +105,12 @@ const About = () => {
             ))
           }
           </h2>
-        <p className="text-2xl w-[45vw] text-white leading-11 tracking-wide" ref={summaryText}>
-          Bazan (He/Him) is a passionate Web Developer with a strong foundation in
-          front-end and back-end technologies. From crafting responsive,
-          user-centric interfaces to integrating powerful backend logic, he brings
-          ideas to life with clean, efficient code. His deep understanding of
-          modern JavaScript frameworks, DOM manipulation, and web animations
-          reflects his drive for interactive, high-performance web experiences.
-          Curious about his skillset?
+        <p className="text-2xl w-[47.1vw] text-white leading-11 tracking-wide" ref={summaryText}>
+          Hi, I'm Bazan, a passionate Web Developer with a solid foundation in both front-end and back-end technologies. I specialize in building responsive, user-focused interfaces and seamlessly integrating them with dynamic backend systems. With hands-on experience in modern JavaScript frameworks, DOM manipulation, and web animations, I strive to create interactive and high-performance digital experiences. Whether it's designing smooth UI flows or optimizing code for scalability, I bring ideas to life with precision and creativity
         </p>
       </div>
 
-      <div className="text-white w-screen h-[75vh] flex flex-col items-center justify-center gap-8 shadow-[inset_0_4px_12px_#8279D9]">
+      <div className="text-white w-screen h-[75vh] flex flex-col items-center justify-center gap-8 shadow-[0_4px_10px_-2px_#4f46e5]" ref={helloWorldDiv}>
         <h3 className="text-[6vw] font-bold tracking-wide" ref={helloWorld}>
           {animationCharacters.map((char, index) => (
             <span key={index} className="char inline-block">

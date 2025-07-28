@@ -29,8 +29,7 @@
 
 
 *{
-  margin: 0;
-  padding: 0;
+  
   box-sizing: border-box;
 }
 
@@ -77,7 +76,7 @@ h1, h2, h3{
   font-family: Armany;
 }
 
-p {
+p, a {
   font-family: Northura;
   
 }
@@ -96,6 +95,11 @@ p {
 
 .margin-top{
   margin-top: 30px;
+}
+
+.margin-top-bottom {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .padding-marque {

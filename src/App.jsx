@@ -4,6 +4,7 @@ import Skills from "./Sections/Skills"
 import Project from "./Sections/Project"
 import Footer from "./Components/Footer"
 import LiquidGlass from "./Components/LiquidGlass"
+import Header from "./Components/Header"
 
 function App() {
   
@@ -12,6 +13,7 @@ function App() {
     <>
     <LiquidGlass />
     <div className="bg-black">
+      <Header />
       <Hero />
       <About />
       <Skills />

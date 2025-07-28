@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 
-const ProjectsCard = forwardRef(({name, bgColor, translateY, headingBG}, ref) => {
+const ProjectsCard = forwardRef(({name, translateY, headingBG}, ref) => {
     
     return(
-        <div className={`cards w-[50vw] h-[55vh] rounded-2xl absolute flex flex-col ${bgColor} ${translateY}`} ref={ref}>
+        <div className={`cards w-[50vw] h-[55vh] text-white rounded-2xl absolute flex flex-col bg-white/10 backdrop-blur-lg border border-white/30 ${translateY}`} ref={ref}>
            <div className={`h-[10vh] ${headingBG} flex justify-center items-center rounded-t-2xl`}>
             <h3 className="text-center text-xl ">{name}</h3>
            </div>

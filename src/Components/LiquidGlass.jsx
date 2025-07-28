@@ -57,7 +57,7 @@ const LiquidGlass = () => {
           cursor: arrow;
           backdrop-filter: url(#${this.id}_filter) blur(0.25px) contrast(1.2) brightness(1.05) saturate(1.1);
           z-index: 9999;
-          pointer-events: auto;
+          pointer-events: none;
         `;
 
         this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');

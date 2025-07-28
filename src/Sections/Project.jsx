@@ -12,7 +12,7 @@ const ProjectsSection = () => {
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
-      // Pin the section
+    
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
@@ -21,7 +21,7 @@ const ProjectsSection = () => {
         scrub: true,
       });
 
-      // Animate cards with stagger
+      
       gsap.from(cardsRef.current, {
         y: 300,
         opacity: 0,
@@ -42,21 +42,21 @@ const ProjectsSection = () => {
   }, []);
 
 const projectCards = [
-    { name: "Project 1", bgColor: "bg-red-700", translateY: "translate-y-0", headingBG: "bg-emerald-900" },
-    { name: "Project 2", bgColor: "bg-cyan-800", translateY: "translate-y-4", headingBG: " bg-neutral-700"},
-    { name: "Project 3", bgColor: "bg-indigo-800", translateY: "translate-y-8", headingBG: "bg-lime-700" },
-    { name: "Project 4", bgColor: "bg-blue-800", translateY: "translate-y-12" },
+    { name: "Project 1", translateY: "translate-y-0", headingBG: "bg-emerald-900" },
+    { name: "Project 2", translateY: "translate-y-4", headingBG: "bg-amber-700"},
+    { name: "Project 3", translateY: "translate-y-8", headingBG: "bg-lime-700" },
+    { name: "Project 4", translateY: "translate-y-12", headingBG: "bg-sky-700"},
   ];
 
 
   return (
-    <section
+    <section id="projects"
       ref={sectionRef}
       className="w-screen h-[110vh]"
     >
       <div className="flex flex-col justify-center items-center relative gap-[30vh]">
         <h2 className="margin-class shadow-xl shadow-indigo-600 text-center text-white text-[5vw] font-bold bg-black w-[60vw] h-[15vh] rounded-xl">
-          What I Have Created
+          What I Have <span className="bg-gradient-to-r from-[#8279D9] to-indigo-900 bg-clip-text text-transparent">Created</span>
         </h2>
 
         <div className="relative flex flex-col justify-center items-center gap-10">
@@ -64,7 +64,6 @@ const projectCards = [
             <ProjectsCard
               key={index}
               name={card.name}
-              bgColor={card.bgColor}
               translateY={card.translateY}
               headingBG={card.headingBG}
               ref={(el) => (cardsRef.current[index] = el)}
