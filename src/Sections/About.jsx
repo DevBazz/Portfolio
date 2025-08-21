@@ -45,46 +45,88 @@ const About = () => {
   }, { scope: helloWorld });
 
   useGSAP(() => {
-    gsap.set(aboutText.current, { x: 400 });
-    gsap.set(summaryText.current, { opacity: 0, y: 20 });
+  const mm = gsap.matchMedia();
 
-    gsap.from(".about .half-str", {
-      scrollTrigger: {
-        trigger: aboutText.current,
-        start: "top 50%",
-        end: "top 80%",
-      },
-      y: 100,
-      opacity: 0,
-      stagger: 0.2,
-      onComplete: () => {
-        gsap.to(aboutText.current, {
-          x: 0,
-          duration: 2,
-          ease: "power3.inOut",
+  mm.add(
+    {
+      isMobile: "(max-width: 768px)",
+      isDesktop: "(min-width: 769px)"
+    },
+    (context) => {
+      const { isMobile, isDesktop } = context.conditions;
+
+      if (isDesktop) {
+        // ✅ Existing desktop animation (keep as is)
+        gsap.set(aboutText.current, { x: 400 });
+        gsap.set(summaryText.current, { opacity: 0, y: 20 });
+
+        gsap.from(".about .half-str", {
+          scrollTrigger: {
+            trigger: aboutText.current,
+            start: "top 50%",
+            end: "top 80%",
+          },
+          y: 100,
+          opacity: 0,
+          stagger: 0.2,
           onComplete: () => {
-            gsap.to(summaryText.current, {
-              y: 5,
-              opacity: 1,
-              duration: 1,
-              ease: "linear",
+            gsap.to(aboutText.current, {
+              x: 0,
+              duration: 1.2,
+              ease: "power3.inOut",
+              onComplete: () => {
+                gsap.to(summaryText.current, {
+                  y: 5,
+                  opacity: 1,
+                  duration: 1,
+                  ease: "linear",
+                });
+              },
             });
           },
         });
-      },
-    });
 
-    gsap.from(".about .sec-str", {
-      scrollTrigger: {
-        trigger: aboutText.current,
-        start: "top 50%",
-        end: "top 80%",
-      },
-      y: 100,
-      opacity: 0,
-      stagger: -0.2,
-    });
-  }, { scope: aboutText });
+        gsap.from(".about .sec-str", {
+          scrollTrigger: {
+            trigger: aboutText.current,
+            start: "top 50%",
+            end: "top 80%",
+          },
+          y: 100,
+          opacity: 0,
+          stagger: -0.2,
+        });
+      }
+
+      if (isMobile) {
+        // ✅ New Mobile Animation (fade-in + scale-up)
+        gsap.set(aboutText.current, { scale: 0.8, opacity: 0 });
+        gsap.set(summaryText.current, { opacity: 0, y: 20 });
+
+        gsap.to(aboutText.current, {
+          scrollTrigger: {
+            trigger: aboutText.current,
+            start: "top 70%",
+          },
+          scale: 1,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          onComplete: () => {
+            gsap.to(summaryText.current, {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power2.out",
+            });
+          },
+        });
+      }
+    }
+  );
+
+  return () => mm.revert();
+}, { scope: aboutText });
 
   return (
     <section id="about" className="flex flex-col items-center justify-center px-4 sm:px-6 lg:px-12">
@@ -98,8 +140,8 @@ const About = () => {
           ))}
         </h2>
 
-        <p className="text-[3.3vw] sm:text-lg md:text-xl lg:text-[1.6vw] text-white leading-relaxed tracking-wide max-w-[90%] sm:max-w-[80%] lg:max-w-[48vw] text-center lg:text-left mt-6 lg:mt-0" ref={summaryText}>
-          Hi, I'm Bazan, a passionate Web Developer with a solid foundation in both front-end and back-end technologies. I specialize in building responsive, user-focused interfaces and seamlessly integrating them with dynamic backend systems. With hands-on experience in modern JavaScript frameworks, DOM manipulation, and web animations, I strive to create interactive and high-performance digital experiences. Whether it's designing smooth UI flows or optimizing code for scalability, I bring ideas to life with precision and creativity.
+        <p className="text-[3.5vw] sm:text-lg md:text-xl lg:text-[1.6vw] text-white leading-relaxed tracking-wide max-w-[90vw] sm:max-w-[80%] lg:max-w-[40vw] text-center lg:text-left mt-6 lg:mt-0" ref={summaryText}>
+          Hi, I'm Bazan, a MERN Stack Developer. I build full-stack web applications using MongoDB, Express, React, and Node.js, creating responsive, dynamic, and high-performance user interfaces integrated seamlessly with robust backends. I enjoy turning ideas into scalable, interactive web solutions with clean, efficient code.
         </p>
       </div>
 
@@ -116,7 +158,7 @@ const About = () => {
           ))}
         </h3>
         <p className="text-sm sm:text-base md:text-lg lg:text-[2vw] max-w-[90%] sm:max-w-[70%] lg:max-w-[30vw]">
-          I fell in Love with Web Development, when I wrote these magical words
+          I fell in Love with Programming, when I wrote these magical words
         </p>
       </div>
     </section>

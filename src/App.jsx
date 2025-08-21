@@ -3,8 +3,8 @@ import Hero from "./Sections/Hero"
 import Skills from "./Sections/Skills"
 import Project from "./Sections/Project"
 import Footer from "./Components/Footer"
-import LiquidGlass from "./Components/LiquidGlass"
 import Header from "./Components/Header"
+import Cursor from "./Components/Cursor"
 
 function App() {
   
@@ -13,6 +13,7 @@ function App() {
     <>
     
     <div className="bg-black">
+      <Cursor />
       <Header />
       <Hero />
       <About />

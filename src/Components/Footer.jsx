@@ -29,19 +29,19 @@ const Footer = () => {
         {/* Left Section */}
         <div className="flex flex-col items-center text-center lg:text-left gap-5 w-full lg:w-1/2">
           <div className="flex flex-wrap justify-center lg:justify-start items-center gap-3">
-            <p className="text-lg sm:text-xl">Made with Love and&nbsp;</p>
+            <p className="text-lg sm:text-2xl">Made with Love and&nbsp;</p>
             <img
               src="/images/react-logo.png"
               alt="react-logo"
               className="w-10 sm:w-12"
             />
-            <span className="text-lg sm:text-xl">&nbsp;+&nbsp;</span>
+            <span className="text-lg sm:text-2xl">&nbsp;+&nbsp;</span>
             <img
               src="/images/gsap-logo.png"
               alt="gsap-logo"
               className="w-10 sm:w-12"
             />
-            <p className="text-lg sm:text-xl">in Bahawalpur, Pakistan</p>
+            <p className="text-lg sm:text-2xl">in Bahawalpur, Pakistan</p>
           </div>
           <p className="text-lg sm:text-2xl">
             <span className="text-zinc-400 text-xl sm:text-2xl">
@@ -72,7 +72,7 @@ const Footer = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between gap-3 border-2 border-white px-4 py-2 rounded-lg text-base sm:text-lg transition duration-500 ease-in-out hover:bg-amber-50 hover:text-black"
+                className="flex items-center justify-between  border-2 border-white px-3 py-2 rounded-lg text-base sm:text-xl transition duration-500 ease-in-out hover:bg-amber-50 hover:text-black"
               >
                 <a
                   href={item.href}
