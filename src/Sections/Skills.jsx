@@ -5,7 +5,7 @@ import {
   FaReact,
   FaVuejs,
 } from "react-icons/fa";
-import { RiTailwindCssFill, RiNodejsLine } from "react-icons/ri";
+import { RiTailwindCssFill, RiNodejsLine, RiNextjsFill } from "react-icons/ri";
 import { SiExpress, SiMongodb, SiMongoose } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import ReactFibre from "../Components/ReactFibre.jsx";
@@ -77,7 +77,7 @@ const Skills = () => {
                 <FaJsSquare className="text-[40px] sm:text-[50px] text-yellow-500" />
                 <RiTailwindCssFill className="text-[40px] sm:text-[50px] text-sky-400" />
                 <FaReact className="text-[40px] sm:text-[50px] text-sky-400" />
-                <FaVuejs className="text-[40px] sm:text-[50px] text-green-500" />
+                <RiNextjsFill className="text-[40px] sm:text-[50px] text-green-500" />
                 <img
                   src="/images/gsap-logo.png"
                   alt="gsap-icon"
