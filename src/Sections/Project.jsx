@@ -1,87 +1,86 @@
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ProjectsCard from "../Components/ProjectsCard";
+const projects = [
+  {
+    image: "/images/Cousin James Mockup.png",
+    name: "Cousin James",
+    desc: "A modern restaurant landing page built with smooth scroll animations, a responsive layout, and an elegant menu showcase.",
+    tech: "React · GSAP · Tailwind",
+  },
+  {
+    image: "/images/Full Stop Home Mockup.png",
+    name: "Full Stop Home",
+    desc: "A real estate platform featuring property listings, interactive filters, and a clean, professional UI.",
+    tech: "React · Node.js · MongoDB",
+  },
+  {
+    image: "/images/Notezy Mockup.png",
+    name: "Notezy",
+    desc: "A full-stack note-taking app with Clerk authentication, real-time WebSocket sync, and a clean dark/light theme UI.",
+    tech: "Next.js · Prisma · PostgreSQL · Clerk · Tailwind",
+  },
+  {
+    image: "/images/Socially Mockup.png",
+    name: "Socially",
+    desc: "A full-stack social media app with Clerk auth, image uploads via UploadThing, follow/post/comment features, and a responsive dark/light UI.",
+    tech: "Next.js · Prisma · PostgreSQL · Clerk · UploadThing · Tailwind",
+  },
+];
 
-gsap.registerPlugin(ScrollTrigger);
-
-const ProjectsSection = () => {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
-
-  useGSAP(() => {
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "+=200%",
-        pin: true,
-        scrub: true,
-      });
-
-      gsap.from(cardsRef.current, {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=200%",
-          scrub: true,
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const projectCards = [
-    { name: "Project 1", translateY: "translate-y-0", headingBG: "bg-emerald-900" },
-    { name: "Project 2", translateY: "translate-y-4", headingBG: "bg-amber-700" },
-    { name: "Project 3", translateY: "translate-y-8", headingBG: "bg-lime-700" },
-    { name: "Project 4", translateY: "translate-y-12", headingBG: "bg-sky-700" },
-  ];
-
-  return (
-    <section
-      id="projects"
-      ref={sectionRef}
-      className="w-full min-h-screen px-4 sm:px-8 py-12"
+const ProjectCard = ({ image, name, desc, tech }) => (
+  <div className="group w-full h-[380px]" style={{ perspective: "1000px" }}>
+    <div
+      className="relative w-full h-full transition-transform duration-700 ease-in-out"
+      style={{ transformStyle: "preserve-3d" }}
     >
-      <div className="flex flex-col justify-center items-center relative gap-16 sm:gap-[15vh]">
-        {/* Responsive Heading */}
-        <h2
-          className="shadow-xl shadow-indigo-600 text-center text-white font-bold bg-black 
-          w-full sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%]
-          rounded-xl px-4 py-6 text-[clamp(1.5rem,4vw,3rem)]"
-        >
-          What I Have{" "}
-          <span className="bg-gradient-to-r from-[#8279D9] to-indigo-900 bg-clip-text text-transparent">
-            Created
-          </span>
-        </h2>
-
-        {/* Cards Container - responsive grid */}
-        <div
-          className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 
-          gap-8 sm:gap-10 justify-items-center w-full max-w-7xl"
-        >
-          {projectCards.map((card, index) => (
-            <ProjectsCard
-              key={index}
-              name={card.name}
-              translateY={card.translateY}
-              headingBG={card.headingBG}
-              ref={(el) => (cardsRef.current[index] = el)}
-            />
-          ))}
+      {/* Front */}
+      <div
+        className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl border border-white/20"
+        style={{ backfaceVisibility: "hidden" }}
+      >
+        <img src={image} alt={name} className="w-full h-full object-contain bg-black" />
+        <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/80 to-transparent">
+          <p className="text-white font-semibold text-lg">{name}</p>
         </div>
       </div>
-    </section>
-  );
-};
+
+      {/* Back */}
+      <div
+        className="absolute inset-0 rounded-2xl flex flex-col justify-center items-center gap-4 p-6 bg-[#0f0f1a] border border-white/10 shadow-xl"
+        style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+      >
+        <h3 className="text-white font-bold text-xl text-center">{name}</h3>
+        <p className="text-white/70 text-sm text-center leading-relaxed">{desc}</p>
+        <span className="text-xs text-indigo-400 font-mono tracking-wide">{tech}</span>
+      </div>
+
+      {/* Flip on hover via inline style override */}
+      <style>{`
+        .group:hover > div { transform: rotateY(180deg); }
+      `}</style>
+    </div>
+  </div>
+);
+
+const ProjectsSection = () => (
+  <section id="projects" className="w-full min-h-screen px-4 sm:px-8 py-12">
+    <div className="flex flex-col items-center gap-12 max-w-6xl mx-auto">
+      <h2
+        className="shadow-xl shadow-indigo-600 text-center text-white font-bold bg-black
+        w-full sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%]
+        rounded-xl px-4 py-6 text-[clamp(1.5rem,4vw,3rem)]"
+      >
+        What I Have{" "}
+        <span className="bg-gradient-to-r from-[#8279D9] to-indigo-900 bg-clip-text text-transparent">
+          Created
+        </span>
+      </h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+        {projects.map((p, i) => (
+          <ProjectCard key={i} {...p} />
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default ProjectsSection;
